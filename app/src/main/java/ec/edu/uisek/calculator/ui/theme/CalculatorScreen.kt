@@ -1,4 +1,5 @@
-package ec.edu.uisek.calculator
+package ec.edu.uisek.calculator.ui.theme
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -81,11 +82,12 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
         "7", "8", "9", "÷",
         "4", "5", "6", "×",
         "1", "2", "3", "−",
-        "0", ".", "=", "+"
+        "0", ".", "=", "+",
+        "K", "E", "V", "O"
     )
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(4),
+        columns = GridCells.Fixed(45),
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
@@ -105,7 +107,7 @@ fun CalculatorButton(label: String, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .aspectRatio(1f)
-            .background(Color.DarkGray, shape = MaterialTheme.shapes.medium)
+            .background(if (label in listOf("AC", "=", "÷", "×", "−", "+", ".")) Purple40 else Purple40)
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
